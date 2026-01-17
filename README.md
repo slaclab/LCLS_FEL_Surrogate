@@ -26,3 +26,9 @@ print(model.output_variables)
 ```
  NOTE: when not specified, input variables are set to their default values
  as defined in `model_config.yaml`
+
+## Running with Polylithic
+
+```
+poly_lithic run -c polylithic_config.yaml -d -p
+```

@@ -1,0 +1,53 @@
+deployment:
+  type: "continuous"
+  rate: 1 #seconds
+
+modules: 
+  
+  # p4p server instance hosting the model input PVs
+  p4p_server:
+    name: "p4p_server" # overrides the top key
+    type: "interface.p4p_server"
+    pub: "in_interface"
+    sub: 
+      - "get_all"
+      - "out_transformer" # look we can do this now!               
+    module_args: None # defines what arguments to pass to the module observer, if any this can inform unpacking etc
+    config: 
+      EPICS_PVA_NAME_SERVERS: "localhost:5075"
+      variables:
+        # TODO: Expose more of these, preferrably in a more automatic way
+        # May be worth adding support for a !include directive to polylithic and LUME model so we can share a single YAML
+        # with a full list of input PVs.
+        # Alternatively, we could automatically detect input and output PVs.
+        QUAD:LI21:221:BCTRL:
+          proto: pva
+          name: QUAD:LI21:221:BCTRL
+  
+  # The model!
+  model:
+    name: "model"
+    type: "model.SurrogateModelFactory"
+    pub: "model"          # Publish our outputs to "model"
+    sub: "in_interface"   # Inputs defined by "p4p_server"
+    module_args: None
+    config:
+      type: "LocalModelGetter"
+      args: 
+        model_path: "model/model.py" 
+        model_factory_class: "ModelFactory"
+  
+  # Additional p4p server to serve the outputs (just one variable for now)
+  # It doesn't seem like we can use a single p4p server instance to serve inputs and outputs. This is something
+  # that will need to be changed, because we end up spinning up a new server instance with a random port.
+  output_p4p_server:
+    name: "output_p4p_server"
+    type: "interface.p4p_server"
+    sub: "model"          # Subscribe to updates from the model
+    pub: "output_p4p"     # Publish seems to be required :(
+    module_args: None
+    config:
+      variables:
+        hxr_pulse_intensity:
+          proto: pva
+          name: hxr_pulse_intensity
