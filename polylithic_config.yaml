@@ -11,7 +11,7 @@ modules:
     pub: "in_interface"
     sub: 
       - "get_all"
-      - "out_transformer" # look we can do this now!               
+      - "model" # look we can do this now!
     module_args: None # defines what arguments to pass to the module observer, if any this can inform unpacking etc
     config: 
       EPICS_PVA_NAME_SERVERS: "localhost:5075"
@@ -23,7 +23,11 @@ modules:
         QUAD:LI21:221:BCTRL:
           proto: pva
           name: QUAD:LI21:221:BCTRL
-  
+        hxr_pulse_intensity:
+          proto: pva
+          name: hxr_pulse_intensity
+          mode: out
+
   # The model!
   model:
     name: "model"
@@ -36,18 +40,3 @@ modules:
       args: 
         model_path: "model/model.py" 
         model_factory_class: "ModelFactory"
-  
-  # Additional p4p server to serve the outputs (just one variable for now)
-  # It doesn't seem like we can use a single p4p server instance to serve inputs and outputs. This is something
-  # that will need to be changed, because we end up spinning up a new server instance with a random port.
-  output_p4p_server:
-    name: "output_p4p_server"
-    type: "interface.p4p_server"
-    sub: "model"          # Subscribe to updates from the model
-    pub: "output_p4p"     # Publish seems to be required :(
-    module_args: None
-    config:
-      variables:
-        hxr_pulse_intensity:
-          proto: pva
-          name: hxr_pulse_intensity

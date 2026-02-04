@@ -11,6 +11,7 @@ class TorchModelHelper(TorchModel):
     Workaround for an issue with publishing Tensor variables in polylithic
     """
     def _evaluate(self, input_dict):
+        print(input_dict)
         res = super()._evaluate(input_dict)
         return {x: float(y) for x, y in res.items()}
 
