@@ -16,10 +16,6 @@ modules:
     config: 
       EPICS_PVA_NAME_SERVERS: "localhost:5075"
       variables:
-        # TODO: Expose more of these, preferrably in a more automatic way
-        # May be worth adding support for a !include directive to polylithic and LUME model so we can share a single YAML
-        # with a full list of input PVs.
-        # Alternatively, we could automatically detect input and output PVs.
         QUAD:LI21:221:BCTRL:
           proto: pva
           name: QUAD:LI21:221:BCTRL
