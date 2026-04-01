@@ -1,0 +1,903 @@
+deployment:
+  type: "continuous"
+  rate: 1 #seconds
+
+modules: 
+  
+  # p4p server instance hosting the model input PVs
+  p4p_server:
+    name: "p4p_server" # overrides the top key
+    type: "interface.p4p_server"
+    pub: "in_interface"
+    sub: 
+      - "get_all"
+      - "model" # look we can do this now!
+    module_args: None # defines what arguments to pass to the module observer, if any this can inform unpacking etc
+    config: 
+      EPICS_PVA_NAME_SERVERS: "localhost:5075"
+      variables:
+        QUAD:LI21:221:BCTRL:
+          proto: pva
+          name: QUAD:LI21:221:BCTRL
+        QUAD:LI21:211:BCTRL:
+          proto: pva
+          name: QUAD:LI21:211:BCTRL
+        QUAD:LI21:251:BCTRL:
+          proto: pva
+          name: QUAD:LI21:251:BCTRL
+        QUAD:LI21:271:BCTRL:
+          proto: pva
+          name: QUAD:LI21:271:BCTRL
+        QUAD:LI21:335:BCTRL:
+          proto: pva
+          name: QUAD:LI21:335:BCTRL
+        QUAD:LI24:740:BCTRL:
+          proto: pva
+          name: QUAD:LI24:740:BCTRL
+        QUAD:LI24:860:BCTRL:
+          proto: pva
+          name: QUAD:LI24:860:BCTRL
+        QUAD:LTUH:295:BCTRL:
+          proto: pva
+          name: QUAD:LTUH:295:BCTRL
+        QUAD:LTUH:385:BCTRL:
+          proto: pva
+          name: QUAD:LTUH:385:BCTRL
+        QUAD:LTUH:395:BCTRL:
+          proto: pva
+          name: QUAD:LTUH:395:BCTRL
+        QUAD:LTUH:440:BCTRL:
+          proto: pva
+          name: QUAD:LTUH:440:BCTRL
+        QUAD:LTUH:460:BCTRL:
+          proto: pva
+          name: QUAD:LTUH:460:BCTRL
+        QUAD:LTUH:485:BCTRL:
+          proto: pva
+          name: QUAD:LTUH:485:BCTRL
+        QUAD:LTUH:495:BCTRL:
+          proto: pva
+          name: QUAD:LTUH:495:BCTRL
+        QUAD:LTUH:585:BCTRL:
+          proto: pva
+          name: QUAD:LTUH:585:BCTRL
+        QUAD:LTUH:595:BCTRL:
+          proto: pva
+          name: QUAD:LTUH:595:BCTRL
+        QUAD:LTUH:150:BCTRL:
+          proto: pva
+          name: QUAD:LTUH:150:BCTRL
+        QUAD:LTUH:170:BCTRL:
+          proto: pva
+          name: QUAD:LTUH:170:BCTRL
+        QUAD:LTUH:350:BCTRL:
+          proto: pva
+          name: QUAD:LTUH:350:BCTRL
+        QUAD:LTUH:450:BCTRL:
+          proto: pva
+          name: QUAD:LTUH:450:BCTRL
+        QUAD:LTUH:550:BCTRL:
+          proto: pva
+          name: QUAD:LTUH:550:BCTRL
+        QUAD:LTUH:390:BCTRL:
+          proto: pva
+          name: QUAD:LTUH:390:BCTRL
+        QUAD:LTUH:490:BCTRL:
+          proto: pva
+          name: QUAD:LTUH:490:BCTRL
+        QUAD:LTUH:590:BCTRL:
+          proto: pva
+          name: QUAD:LTUH:590:BCTRL
+        QUAD:LTUH:620:BCTRL:
+          proto: pva
+          name: QUAD:LTUH:620:BCTRL
+        QUAD:LTUH:640:BCTRL:
+          proto: pva
+          name: QUAD:LTUH:640:BCTRL
+        QUAD:LTUH:660:BCTRL:
+          proto: pva
+          name: QUAD:LTUH:660:BCTRL
+        QUAD:LTUH:680:BCTRL:
+          proto: pva
+          name: QUAD:LTUH:680:BCTRL
+        QUAD:LTUH:840:BCTRL:
+          proto: pva
+          name: QUAD:LTUH:840:BCTRL
+        QUAD:LTUH:860:BCTRL:
+          proto: pva
+          name: QUAD:LTUH:860:BCTRL
+        QUAD:LTUH:880:BCTRL:
+          proto: pva
+          name: QUAD:LTUH:880:BCTRL
+        QUAD:UNDH:1380:BCTRL:
+          proto: pva
+          name: QUAD:UNDH:1380:BCTRL
+        QUAD:UNDH:1480:BCTRL:
+          proto: pva
+          name: QUAD:UNDH:1480:BCTRL
+        QUAD:UNDH:1580:BCTRL:
+          proto: pva
+          name: QUAD:UNDH:1580:BCTRL
+        QUAD:UNDH:1680:BCTRL:
+          proto: pva
+          name: QUAD:UNDH:1680:BCTRL
+        QUAD:UNDH:1780:BCTRL:
+          proto: pva
+          name: QUAD:UNDH:1780:BCTRL
+        QUAD:UNDH:1880:BCTRL:
+          proto: pva
+          name: QUAD:UNDH:1880:BCTRL
+        QUAD:UNDH:1980:BCTRL:
+          proto: pva
+          name: QUAD:UNDH:1980:BCTRL
+        QUAD:UNDH:2080:BCTRL:
+          proto: pva
+          name: QUAD:UNDH:2080:BCTRL
+        QUAD:UNDH:2180:BCTRL:
+          proto: pva
+          name: QUAD:UNDH:2180:BCTRL
+        QUAD:UNDH:2280:BCTRL:
+          proto: pva
+          name: QUAD:UNDH:2280:BCTRL
+        QUAD:UNDH:2380:BCTRL:
+          proto: pva
+          name: QUAD:UNDH:2380:BCTRL
+        QUAD:UNDH:2480:BCTRL:
+          proto: pva
+          name: QUAD:UNDH:2480:BCTRL
+        QUAD:UNDH:2580:BCTRL:
+          proto: pva
+          name: QUAD:UNDH:2580:BCTRL
+        QUAD:UNDH:2680:BCTRL:
+          proto: pva
+          name: QUAD:UNDH:2680:BCTRL
+        QUAD:UNDH:2880:BCTRL:
+          proto: pva
+          name: QUAD:UNDH:2880:BCTRL
+        QUAD:UNDH:3180:BCTRL:
+          proto: pva
+          name: QUAD:UNDH:3180:BCTRL
+        QUAD:UNDH:3280:BCTRL:
+          proto: pva
+          name: QUAD:UNDH:3280:BCTRL
+        QUAD:UNDH:3380:BCTRL:
+          proto: pva
+          name: QUAD:UNDH:3380:BCTRL
+        QUAD:UNDH:3480:BCTRL:
+          proto: pva
+          name: QUAD:UNDH:3480:BCTRL
+        QUAD:UNDH:3580:BCTRL:
+          proto: pva
+          name: QUAD:UNDH:3580:BCTRL
+        QUAD:UNDH:3680:BCTRL:
+          proto: pva
+          name: QUAD:UNDH:3680:BCTRL
+        QUAD:UNDH:3780:BCTRL:
+          proto: pva
+          name: QUAD:UNDH:3780:BCTRL
+        QUAD:UNDH:3880:BCTRL:
+          proto: pva
+          name: QUAD:UNDH:3880:BCTRL
+        QUAD:UNDH:3980:BCTRL:
+          proto: pva
+          name: QUAD:UNDH:3980:BCTRL
+        QUAD:UNDH:4080:BCTRL:
+          proto: pva
+          name: QUAD:UNDH:4080:BCTRL
+        QUAD:UNDH:4180:BCTRL:
+          proto: pva
+          name: QUAD:UNDH:4180:BCTRL
+        QUAD:UNDH:4280:BCTRL:
+          proto: pva
+          name: QUAD:UNDH:4280:BCTRL
+        QUAD:UNDH:4380:BCTRL:
+          proto: pva
+          name: QUAD:UNDH:4380:BCTRL
+        QUAD:UNDH:4480:BCTRL:
+          proto: pva
+          name: QUAD:UNDH:4480:BCTRL
+        QUAD:LI21:201:BCTRL:
+          proto: pva
+          name: QUAD:LI21:201:BCTRL
+        QUAD:LI21:401:BCTRL:
+          proto: pva
+          name: QUAD:LI21:401:BCTRL
+        QUAD:LI21:501:BCTRL:
+          proto: pva
+          name: QUAD:LI21:501:BCTRL
+        QUAD:LI21:601:BCTRL:
+          proto: pva
+          name: QUAD:LI21:601:BCTRL
+        QUAD:LI21:701:BCTRL:
+          proto: pva
+          name: QUAD:LI21:701:BCTRL
+        QUAD:LI21:801:BCTRL:
+          proto: pva
+          name: QUAD:LI21:801:BCTRL
+        QUAD:LI21:901:BCTRL:
+          proto: pva
+          name: QUAD:LI21:901:BCTRL
+        QUAD:LI22:201:BCTRL:
+          proto: pva
+          name: QUAD:LI22:201:BCTRL
+        QUAD:LI22:301:BCTRL:
+          proto: pva
+          name: QUAD:LI22:301:BCTRL
+        QUAD:LI22:401:BCTRL:
+          proto: pva
+          name: QUAD:LI22:401:BCTRL
+        QUAD:LI22:501:BCTRL:
+          proto: pva
+          name: QUAD:LI22:501:BCTRL
+        QUAD:LI22:601:BCTRL:
+          proto: pva
+          name: QUAD:LI22:601:BCTRL
+        QUAD:LI22:701:BCTRL:
+          proto: pva
+          name: QUAD:LI22:701:BCTRL
+        QUAD:LI22:801:BCTRL:
+          proto: pva
+          name: QUAD:LI22:801:BCTRL
+        QUAD:LI22:901:BCTRL:
+          proto: pva
+          name: QUAD:LI22:901:BCTRL
+        QUAD:LI23:201:BCTRL:
+          proto: pva
+          name: QUAD:LI23:201:BCTRL
+        QUAD:LI23:301:BCTRL:
+          proto: pva
+          name: QUAD:LI23:301:BCTRL
+        QUAD:LI23:401:BCTRL:
+          proto: pva
+          name: QUAD:LI23:401:BCTRL
+        QUAD:LI23:501:BCTRL:
+          proto: pva
+          name: QUAD:LI23:501:BCTRL
+        QUAD:LI23:601:BCTRL:
+          proto: pva
+          name: QUAD:LI23:601:BCTRL
+        QUAD:LI23:701:BCTRL:
+          proto: pva
+          name: QUAD:LI23:701:BCTRL
+        QUAD:LI23:801:BCTRL:
+          proto: pva
+          name: QUAD:LI23:801:BCTRL
+        QUAD:LI23:901:BCTRL:
+          proto: pva
+          name: QUAD:LI23:901:BCTRL
+        QUAD:LI24:201:BCTRL:
+          proto: pva
+          name: QUAD:LI24:201:BCTRL
+        QUAD:LI24:301:BCTRL:
+          proto: pva
+          name: QUAD:LI24:301:BCTRL
+        QUAD:LI24:401:BCTRL:
+          proto: pva
+          name: QUAD:LI24:401:BCTRL
+        QUAD:LI24:501:BCTRL:
+          proto: pva
+          name: QUAD:LI24:501:BCTRL
+        QUAD:LI25:301:BCTRL:
+          proto: pva
+          name: QUAD:LI25:301:BCTRL
+        QUAD:LI25:401:BCTRL:
+          proto: pva
+          name: QUAD:LI25:401:BCTRL
+        QUAD:LI25:501:BCTRL:
+          proto: pva
+          name: QUAD:LI25:501:BCTRL
+        QUAD:LI25:601:BCTRL:
+          proto: pva
+          name: QUAD:LI25:601:BCTRL
+        QUAD:LI25:701:BCTRL:
+          proto: pva
+          name: QUAD:LI25:701:BCTRL
+        QUAD:LI25:801:BCTRL:
+          proto: pva
+          name: QUAD:LI25:801:BCTRL
+        QUAD:LI25:901:BCTRL:
+          proto: pva
+          name: QUAD:LI25:901:BCTRL
+        QUAD:LI26:201:BCTRL:
+          proto: pva
+          name: QUAD:LI26:201:BCTRL
+        QUAD:LI26:301:BCTRL:
+          proto: pva
+          name: QUAD:LI26:301:BCTRL
+        QUAD:LI26:401:BCTRL:
+          proto: pva
+          name: QUAD:LI26:401:BCTRL
+        QUAD:LI26:501:BCTRL:
+          proto: pva
+          name: QUAD:LI26:501:BCTRL
+        QUAD:LI26:601:BCTRL:
+          proto: pva
+          name: QUAD:LI26:601:BCTRL
+        QUAD:LI26:701:BCTRL:
+          proto: pva
+          name: QUAD:LI26:701:BCTRL
+        QUAD:LI26:801:BCTRL:
+          proto: pva
+          name: QUAD:LI26:801:BCTRL
+        QUAD:LI26:901:BCTRL:
+          proto: pva
+          name: QUAD:LI26:901:BCTRL
+        QUAD:LI27:201:BCTRL:
+          proto: pva
+          name: QUAD:LI27:201:BCTRL
+        QUAD:LI27:301:BCTRL:
+          proto: pva
+          name: QUAD:LI27:301:BCTRL
+        QUAD:LI27:401:BCTRL:
+          proto: pva
+          name: QUAD:LI27:401:BCTRL
+        QUAD:LI27:501:BCTRL:
+          proto: pva
+          name: QUAD:LI27:501:BCTRL
+        QUAD:LI27:601:BCTRL:
+          proto: pva
+          name: QUAD:LI27:601:BCTRL
+        QUAD:LI27:701:BCTRL:
+          proto: pva
+          name: QUAD:LI27:701:BCTRL
+        QUAD:LI27:801:BCTRL:
+          proto: pva
+          name: QUAD:LI27:801:BCTRL
+        QUAD:LI27:901:BCTRL:
+          proto: pva
+          name: QUAD:LI27:901:BCTRL
+        QUAD:LI28:201:BCTRL:
+          proto: pva
+          name: QUAD:LI28:201:BCTRL
+        QUAD:LI28:301:BCTRL:
+          proto: pva
+          name: QUAD:LI28:301:BCTRL
+        QUAD:LI28:401:BCTRL:
+          proto: pva
+          name: QUAD:LI28:401:BCTRL
+        QUAD:LI28:501:BCTRL:
+          proto: pva
+          name: QUAD:LI28:501:BCTRL
+        QUAD:LI28:601:BCTRL:
+          proto: pva
+          name: QUAD:LI28:601:BCTRL
+        QUAD:LI28:701:BCTRL:
+          proto: pva
+          name: QUAD:LI28:701:BCTRL
+        QUAD:LI28:801:BCTRL:
+          proto: pva
+          name: QUAD:LI28:801:BCTRL
+        QUAD:LI28:901:BCTRL:
+          proto: pva
+          name: QUAD:LI28:901:BCTRL
+        QUAD:LI29:201:BCTRL:
+          proto: pva
+          name: QUAD:LI29:201:BCTRL
+        QUAD:LI29:301:BCTRL:
+          proto: pva
+          name: QUAD:LI29:301:BCTRL
+        QUAD:LI29:401:BCTRL:
+          proto: pva
+          name: QUAD:LI29:401:BCTRL
+        QUAD:LI29:501:BCTRL:
+          proto: pva
+          name: QUAD:LI29:501:BCTRL
+        QUAD:LI29:601:BCTRL:
+          proto: pva
+          name: QUAD:LI29:601:BCTRL
+        QUAD:LI29:701:BCTRL:
+          proto: pva
+          name: QUAD:LI29:701:BCTRL
+        QUAD:LI29:801:BCTRL:
+          proto: pva
+          name: QUAD:LI29:801:BCTRL
+        QUAD:LI29:901:BCTRL:
+          proto: pva
+          name: QUAD:LI29:901:BCTRL
+        QUAD:LI30:201:BCTRL:
+          proto: pva
+          name: QUAD:LI30:201:BCTRL
+        QUAD:LI30:301:BCTRL:
+          proto: pva
+          name: QUAD:LI30:301:BCTRL
+        QUAD:LI30:401:BCTRL:
+          proto: pva
+          name: QUAD:LI30:401:BCTRL
+        QUAD:LI30:501:BCTRL:
+          proto: pva
+          name: QUAD:LI30:501:BCTRL
+        QUAD:LI30:601:BCTRL:
+          proto: pva
+          name: QUAD:LI30:601:BCTRL
+        QUAD:LI30:701:BCTRL:
+          proto: pva
+          name: QUAD:LI30:701:BCTRL
+        QUAD:LI30:801:BCTRL:
+          proto: pva
+          name: QUAD:LI30:801:BCTRL
+        QUAD:IN20:771:BCTRL:
+          proto: pva
+          name: QUAD:IN20:771:BCTRL
+        QUAD:LI21:131:BCTRL:
+          proto: pva
+          name: QUAD:LI21:131:BCTRL
+        QUAD:LI21:161:BCTRL:
+          proto: pva
+          name: QUAD:LI21:161:BCTRL
+        QUAD:LI21:278:BCTRL:
+          proto: pva
+          name: QUAD:LI21:278:BCTRL
+        SOLN:IN20:121:BCTRL:
+          proto: pva
+          name: SOLN:IN20:121:BCTRL
+        QUAD:IN20:121:BCTRL:
+          proto: pva
+          name: QUAD:IN20:121:BCTRL
+        QUAD:IN20:122:BCTRL:
+          proto: pva
+          name: QUAD:IN20:122:BCTRL
+        QUAD:IN20:361:BCTRL:
+          proto: pva
+          name: QUAD:IN20:361:BCTRL
+        QUAD:IN20:371:BCTRL:
+          proto: pva
+          name: QUAD:IN20:371:BCTRL
+        QUAD:IN20:425:BCTRL:
+          proto: pva
+          name: QUAD:IN20:425:BCTRL
+        QUAD:IN20:441:BCTRL:
+          proto: pva
+          name: QUAD:IN20:441:BCTRL
+        QUAD:IN20:511:BCTRL:
+          proto: pva
+          name: QUAD:IN20:511:BCTRL
+        QUAD:IN20:525:BCTRL:
+          proto: pva
+          name: QUAD:IN20:525:BCTRL
+        ACCL:LI21:1:L1S_S_AV:
+          proto: pva
+          name: ACCL:LI21:1:L1S_S_AV
+        ACCL:LI21:180:L1X_S_AV:
+          proto: pva
+          name: ACCL:LI21:180:L1X_S_AV
+        ACCL:LI22:1:ADES:
+          proto: pva
+          name: ACCL:LI22:1:ADES
+        ACCL:LI25:1:ADES:
+          proto: pva
+          name: ACCL:LI25:1:ADES
+        ACCL:LI21:1:L1S_S_PV:
+          proto: pva
+          name: ACCL:LI21:1:L1S_S_PV
+        ACCL:LI21:180:L1X_S_PV:
+          proto: pva
+          name: ACCL:LI21:180:L1X_S_PV
+        ACCL:LI22:1:PDES:
+          proto: pva
+          name: ACCL:LI22:1:PDES
+        ACCL:LI25:1:PDES:
+          proto: pva
+          name: ACCL:LI25:1:PDES
+        CAMR:IN20:186:XRMS:
+          proto: pva
+          name: CAMR:IN20:186:XRMS
+        CAMR:IN20:186:YRMS:
+          proto: pva
+          name: CAMR:IN20:186:YRMS
+        XCOR:UNDH:1380:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:1380:BCTRL
+        XCOR:UNDH:1480:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:1480:BCTRL
+        XCOR:UNDH:1580:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:1580:BCTRL
+        XCOR:UNDH:1680:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:1680:BCTRL
+        XCOR:UNDH:1780:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:1780:BCTRL
+        XCOR:UNDH:1880:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:1880:BCTRL
+        XCOR:UNDH:1980:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:1980:BCTRL
+        XCOR:UNDH:2080:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:2080:BCTRL
+        XCOR:UNDH:2180:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:2180:BCTRL
+        XCOR:UNDH:2280:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:2280:BCTRL
+        XCOR:UNDH:2380:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:2380:BCTRL
+        XCOR:UNDH:2480:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:2480:BCTRL
+        XCOR:UNDH:2580:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:2580:BCTRL
+        XCOR:UNDH:2680:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:2680:BCTRL
+        XCOR:UNDH:2780:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:2780:BCTRL
+        XCOR:UNDH:2880:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:2880:BCTRL
+        XCOR:UNDH:2980:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:2980:BCTRL
+        XCOR:UNDH:3080:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:3080:BCTRL
+        XCOR:UNDH:3180:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:3180:BCTRL
+        XCOR:UNDH:3280:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:3280:BCTRL
+        XCOR:UNDH:3380:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:3380:BCTRL
+        XCOR:UNDH:3480:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:3480:BCTRL
+        XCOR:UNDH:3580:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:3580:BCTRL
+        XCOR:UNDH:3680:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:3680:BCTRL
+        XCOR:UNDH:3780:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:3780:BCTRL
+        XCOR:UNDH:3880:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:3880:BCTRL
+        XCOR:UNDH:3980:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:3980:BCTRL
+        XCOR:UNDH:4080:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:4080:BCTRL
+        XCOR:UNDH:4180:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:4180:BCTRL
+        XCOR:UNDH:4280:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:4280:BCTRL
+        XCOR:UNDH:4380:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:4380:BCTRL
+        XCOR:UNDH:4480:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:4480:BCTRL
+        XCOR:UNDH:4580:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:4580:BCTRL
+        XCOR:UNDH:4680:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:4680:BCTRL
+        XCOR:UNDH:4780:BCTRL:
+          proto: pva
+          name: XCOR:UNDH:4780:BCTRL
+        YCOR:UNDH:1380:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:1380:BCTRL
+        YCOR:UNDH:1480:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:1480:BCTRL
+        YCOR:UNDH:1580:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:1580:BCTRL
+        YCOR:UNDH:1680:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:1680:BCTRL
+        YCOR:UNDH:1780:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:1780:BCTRL
+        YCOR:UNDH:1880:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:1880:BCTRL
+        YCOR:UNDH:1980:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:1980:BCTRL
+        YCOR:UNDH:2080:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:2080:BCTRL
+        YCOR:UNDH:2180:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:2180:BCTRL
+        YCOR:UNDH:2280:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:2280:BCTRL
+        YCOR:UNDH:2380:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:2380:BCTRL
+        YCOR:UNDH:2480:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:2480:BCTRL
+        YCOR:UNDH:2580:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:2580:BCTRL
+        YCOR:UNDH:2680:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:2680:BCTRL
+        YCOR:UNDH:2780:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:2780:BCTRL
+        YCOR:UNDH:2880:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:2880:BCTRL
+        YCOR:UNDH:2980:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:2980:BCTRL
+        YCOR:UNDH:3080:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:3080:BCTRL
+        YCOR:UNDH:3180:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:3180:BCTRL
+        YCOR:UNDH:3280:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:3280:BCTRL
+        YCOR:UNDH:3380:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:3380:BCTRL
+        YCOR:UNDH:3480:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:3480:BCTRL
+        YCOR:UNDH:3580:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:3580:BCTRL
+        YCOR:UNDH:3680:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:3680:BCTRL
+        YCOR:UNDH:3780:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:3780:BCTRL
+        YCOR:UNDH:3880:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:3880:BCTRL
+        YCOR:UNDH:3980:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:3980:BCTRL
+        YCOR:UNDH:4080:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:4080:BCTRL
+        YCOR:UNDH:4180:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:4180:BCTRL
+        YCOR:UNDH:4280:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:4280:BCTRL
+        YCOR:UNDH:4380:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:4380:BCTRL
+        YCOR:UNDH:4480:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:4480:BCTRL
+        YCOR:UNDH:4580:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:4580:BCTRL
+        YCOR:UNDH:4680:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:4680:BCTRL
+        YCOR:UNDH:4780:BCTRL:
+          proto: pva
+          name: YCOR:UNDH:4780:BCTRL
+        PHAS:UNDH:1495:GapDes:
+          proto: pva
+          name: PHAS:UNDH:1495:GapDes
+        PHAS:UNDH:1595:GapDes:
+          proto: pva
+          name: PHAS:UNDH:1595:GapDes
+        PHAS:UNDH:1695:GapDes:
+          proto: pva
+          name: PHAS:UNDH:1695:GapDes
+        PHAS:UNDH:1795:GapDes:
+          proto: pva
+          name: PHAS:UNDH:1795:GapDes
+        PHAS:UNDH:1895:GapDes:
+          proto: pva
+          name: PHAS:UNDH:1895:GapDes
+        PHAS:UNDH:1995:GapDes:
+          proto: pva
+          name: PHAS:UNDH:1995:GapDes
+        PHAS:UNDH:2095:GapDes:
+          proto: pva
+          name: PHAS:UNDH:2095:GapDes
+        PHAS:UNDH:2295:GapDes:
+          proto: pva
+          name: PHAS:UNDH:2295:GapDes
+        PHAS:UNDH:2395:GapDes:
+          proto: pva
+          name: PHAS:UNDH:2395:GapDes
+        PHAS:UNDH:2495:GapDes:
+          proto: pva
+          name: PHAS:UNDH:2495:GapDes
+        PHAS:UNDH:2595:GapDes:
+          proto: pva
+          name: PHAS:UNDH:2595:GapDes
+        PHAS:UNDH:2695:GapDes:
+          proto: pva
+          name: PHAS:UNDH:2695:GapDes
+        PHAS:UNDH:2795:GapDes:
+          proto: pva
+          name: PHAS:UNDH:2795:GapDes
+        PHAS:UNDH:2995:GapDes:
+          proto: pva
+          name: PHAS:UNDH:2995:GapDes
+        PHAS:UNDH:3095:GapDes:
+          proto: pva
+          name: PHAS:UNDH:3095:GapDes
+        PHAS:UNDH:3195:GapDes:
+          proto: pva
+          name: PHAS:UNDH:3195:GapDes
+        PHAS:UNDH:3295:GapDes:
+          proto: pva
+          name: PHAS:UNDH:3295:GapDes
+        PHAS:UNDH:3395:GapDes:
+          proto: pva
+          name: PHAS:UNDH:3395:GapDes
+        PHAS:UNDH:3495:GapDes:
+          proto: pva
+          name: PHAS:UNDH:3495:GapDes
+        PHAS:UNDH:3595:GapDes:
+          proto: pva
+          name: PHAS:UNDH:3595:GapDes
+        PHAS:UNDH:3695:GapDes:
+          proto: pva
+          name: PHAS:UNDH:3695:GapDes
+        PHAS:UNDH:3795:GapDes:
+          proto: pva
+          name: PHAS:UNDH:3795:GapDes
+        PHAS:UNDH:3895:GapDes:
+          proto: pva
+          name: PHAS:UNDH:3895:GapDes
+        PHAS:UNDH:3995:GapDes:
+          proto: pva
+          name: PHAS:UNDH:3995:GapDes
+        PHAS:UNDH:4095:GapDes:
+          proto: pva
+          name: PHAS:UNDH:4095:GapDes
+        PHAS:UNDH:4195:GapDes:
+          proto: pva
+          name: PHAS:UNDH:4195:GapDes
+        PHAS:UNDH:4295:GapDes:
+          proto: pva
+          name: PHAS:UNDH:4295:GapDes
+        PHAS:UNDH:4395:GapDes:
+          proto: pva
+          name: PHAS:UNDH:4395:GapDes
+        PHAS:UNDH:4495:GapDes:
+          proto: pva
+          name: PHAS:UNDH:4495:GapDes
+        PHAS:UNDH:4595:GapDes:
+          proto: pva
+          name: PHAS:UNDH:4595:GapDes
+        PHAS:UNDH:4695:GapDes:
+          proto: pva
+          name: PHAS:UNDH:4695:GapDes
+        USEG:UNDH:1450:GapDes:
+          proto: pva
+          name: USEG:UNDH:1450:GapDes
+        USEG:UNDH:1550:GapDes:
+          proto: pva
+          name: USEG:UNDH:1550:GapDes
+        USEG:UNDH:1650:GapDes:
+          proto: pva
+          name: USEG:UNDH:1650:GapDes
+        USEG:UNDH:1750:GapDes:
+          proto: pva
+          name: USEG:UNDH:1750:GapDes
+        USEG:UNDH:1850:GapDes:
+          proto: pva
+          name: USEG:UNDH:1850:GapDes
+        USEG:UNDH:1950:GapDes:
+          proto: pva
+          name: USEG:UNDH:1950:GapDes
+        USEG:UNDH:2050:GapDes:
+          proto: pva
+          name: USEG:UNDH:2050:GapDes
+        USEG:UNDH:2250:GapDes:
+          proto: pva
+          name: USEG:UNDH:2250:GapDes
+        USEG:UNDH:2350:GapDes:
+          proto: pva
+          name: USEG:UNDH:2350:GapDes
+        USEG:UNDH:2450:GapDes:
+          proto: pva
+          name: USEG:UNDH:2450:GapDes
+        USEG:UNDH:2550:GapDes:
+          proto: pva
+          name: USEG:UNDH:2550:GapDes
+        USEG:UNDH:2650:GapDes:
+          proto: pva
+          name: USEG:UNDH:2650:GapDes
+        USEG:UNDH:2750:GapDes:
+          proto: pva
+          name: USEG:UNDH:2750:GapDes
+        USEG:UNDH:2950:GapDes:
+          proto: pva
+          name: USEG:UNDH:2950:GapDes
+        USEG:UNDH:3050:GapDes:
+          proto: pva
+          name: USEG:UNDH:3050:GapDes
+        USEG:UNDH:3150:GapDes:
+          proto: pva
+          name: USEG:UNDH:3150:GapDes
+        USEG:UNDH:3250:GapDes:
+          proto: pva
+          name: USEG:UNDH:3250:GapDes
+        USEG:UNDH:3350:GapDes:
+          proto: pva
+          name: USEG:UNDH:3350:GapDes
+        USEG:UNDH:3450:GapDes:
+          proto: pva
+          name: USEG:UNDH:3450:GapDes
+        USEG:UNDH:3550:GapDes:
+          proto: pva
+          name: USEG:UNDH:3550:GapDes
+        USEG:UNDH:3650:GapDes:
+          proto: pva
+          name: USEG:UNDH:3650:GapDes
+        USEG:UNDH:3750:GapDes:
+          proto: pva
+          name: USEG:UNDH:3750:GapDes
+        USEG:UNDH:3850:GapDes:
+          proto: pva
+          name: USEG:UNDH:3850:GapDes
+        USEG:UNDH:3950:GapDes:
+          proto: pva
+          name: USEG:UNDH:3950:GapDes
+        USEG:UNDH:4050:GapDes:
+          proto: pva
+          name: USEG:UNDH:4050:GapDes
+        USEG:UNDH:4150:GapDes:
+          proto: pva
+          name: USEG:UNDH:4150:GapDes
+        USEG:UNDH:4250:GapDes:
+          proto: pva
+          name: USEG:UNDH:4250:GapDes
+        USEG:UNDH:4350:GapDes:
+          proto: pva
+          name: USEG:UNDH:4350:GapDes
+        USEG:UNDH:4450:GapDes:
+          proto: pva
+          name: USEG:UNDH:4450:GapDes
+        USEG:UNDH:4550:GapDes:
+          proto: pva
+          name: USEG:UNDH:4550:GapDes
+        USEG:UNDH:4650:GapDes:
+          proto: pva
+          name: USEG:UNDH:4650:GapDes
+        USEG:UNDH:4750:GapDes:
+          proto: pva
+          name: USEG:UNDH:4750:GapDes
+
+        hxr_pulse_intensity:
+          proto: pva
+          name: hxr_pulse_intensity
+          mode: out
+
+  # The model!
+  model:
+    name: "model"
+    type: "model.SurrogateModelFactory"
+    pub: "model"          # Publish our outputs to "model"
+    sub: "in_interface"   # Inputs defined by "p4p_server"
+    module_args: None
+    config:
+      type: "LocalModelGetter"
+      args: 
+        model_path: "model/model.py" 
+        model_factory_class: "ModelFactory"
