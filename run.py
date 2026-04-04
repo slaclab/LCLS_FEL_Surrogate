@@ -7,13 +7,14 @@ import argparse
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Run the model as either a standlone server, or as a client consuming PVs from an external source.')
     parser.add_argument('--remote', action='store_true', help='Configure input PVs as monitors for remote PVs')
+    parser.add_argument('--prefix', type=str, default='LCLS:FEL:SURROGATE:', help='Prefix to prepend to the PVs')
     args = parser.parse_args()
 
     model = LUMETorchModel(
         torch_model=TorchModel("model_config.yaml")
     )
     
-    config = Runner.generate_config(model=model, remote_inputs=args.remote)
+    config = Runner.generate_config(model=model, remote_inputs=args.remote, prefix=args.prefix)
     
     runner = Runner(
         model=model,
