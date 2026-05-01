@@ -1,6 +1,6 @@
 device: cpu
 input_transformers:
-- resources/lcls_fel_input_scaler.pt
+- lcls_fel_input_scaler.pt
 input_variables:
   QUAD:LI21:211:BCTRL:
     variable_class: TorchScalarVariable
@@ -2730,11 +2730,11 @@ input_variables:
     - 7.395750045776367
     - 7.641449928283691
     unit: mm
-model: resources/lcls_fel_final_model_cpu.pt
+model: lcls_fel_final_model_cpu.pt
 model_class: TorchModule
 output_format: tensor
 output_transformers:
-- resources/lcls_fel_output_scaler.pt
+- lcls_fel_output_scaler.pt
 output_variables:
   GDET:FEE1:241:ENRC:
     read_only: false

@@ -26,3 +26,11 @@ print(model.output_variables)
 ```
  NOTE: when not specified, input variables are set to their default values
  as defined in `model_config.yaml`
+
+## To load packaged model
+After doing pip install of this repository 
+```python
+from lcls_fel_model import load_model
+model = load_model()
+print(model.evaluate({"ACCL:LI25:1:ADES": 6260.0}))
+```

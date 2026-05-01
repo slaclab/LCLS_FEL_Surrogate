@@ -1,0 +1,4 @@
+include lcls_fel_model/resources/*.yaml
+include lcls_fel_model/resources/*.pt
+include README.md
+include examples/*.py
