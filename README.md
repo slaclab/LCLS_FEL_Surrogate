@@ -3,14 +3,13 @@ Self-contained ML-based surrogate model of the LCLS FEL pulse intensity packaged
 
 ## Dependencies
 ```
-torch
-lume-model
+lume-torch # (installed from main at the moment: https://github.com/lume-science/lume-torch)
 ```
 
 ## Usage
 From the main repoistory directory, call
 ```python
-from lume_model.models import TorchModel
+from lume_torch.models import TorchModel
 
 # load model from yaml
 model = TorchModel("model_config.yaml")
